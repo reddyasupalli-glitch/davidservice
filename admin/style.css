@@ -1,0 +1,113 @@
+:root{
+  --bg:#050505;
+  --panel: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.09);
+  --text:#f2f2f2;
+  --muted: rgba(255,255,255,0.65);
+  --red:#ff1f3d;
+  --glow: 0 0 26px rgba(255,31,61,0.55);
+  --radius: 18px;
+}
+*{ box-sizing:border-box }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, Segoe UI, Roboto, Arial;
+  background:
+    radial-gradient(1200px 800px at 10% 10%, rgba(255,31,61,0.14), transparent 60%),
+    var(--bg);
+  color: var(--text);
+}
+.wrap{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 36px 18px;
+}
+.head{
+  text-align:center;
+  margin-bottom: 20px;
+}
+.head h1{
+  margin:0;
+  font-size: 40px;
+  text-shadow: 0 0 25px rgba(255,31,61,0.2);
+}
+.panel{
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.55);
+  padding: 18px;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.5);
+}
+.field{ display:flex; flex-direction:column; gap:8px; margin: 14px 0; }
+label{ font-weight:1000; font-size: 13px; }
+input{
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.65);
+  color: var(--text);
+  outline:none;
+}
+.btn{
+  border:none;
+  cursor:pointer;
+  border-radius: 14px;
+  font-weight:1000;
+  padding: 12px 14px;
+  color: #0b0b0b;
+  background: linear-gradient(180deg, #ff304a, #ff1f3d);
+  box-shadow: var(--glow);
+  transition:0.2s ease;
+}
+.btn:hover{ transform: translateY(-2px); }
+.btn.danger{
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,31,61,0.35);
+  color: var(--text);
+  box-shadow: none;
+}
+.btn.danger:hover{ box-shadow: var(--glow); }
+.msg{ margin-top: 10px; }
+.hidden{ display:none; }
+.muted{ color: var(--muted); font-size: 13px; }
+
+.dashTop{
+  display:flex;
+  justify-content:space-between;
+  gap: 10px;
+  align-items:center;
+}
+.dashBtns{ display:flex; gap:10px; }
+.search{
+  width:100%;
+  margin: 14px 0;
+}
+.orders{ display:grid; gap: 12px; }
+
+.orderCard{
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.10);
+  background: var(--panel);
+  padding: 14px;
+}
+.orderHead{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.orderHead strong{ text-shadow: 0 0 15px rgba(255,31,61,0.25); }
+.orderMeta{
+  display:grid;
+  gap:8px;
+  margin-top: 10px;
+  color: rgba(255,255,255,0.82);
+}
+.badge{
+  display:inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight:1000;
+  border: 1px solid rgba(255,31,61,0.30);
+  background: rgba(255,31,61,0.08);
+}
