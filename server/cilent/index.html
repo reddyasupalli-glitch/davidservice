@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>David Services</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <canvas id="particles"></canvas>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="logo">
+      <span class="dot"></span>
+      <span class="brand">David Services</span>
+    </div>
+
+    <nav class="nav">
+      <a href="#pricing">Pricing</a>
+      <a href="#order">Order</a>
+      <a class="discord" href="https://discord.gg/zQbmDXnBmP" target="_blank">Discord</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__inner">
+      <h1>
+        Discord & Minecraft<br/>
+        Setup Services
+      </h1>
+      <p class="hero__sub">
+        Pro server setup, automation, tickets, permissions, bots, and Minecraft plugin configuration.
+      </p>
+
+      <div class="hero__actions">
+        <a href="#order" class="btn btn-primary">Order Now</a>
+        <a href="#pricing" class="btn btn-outline">View Packages</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat__num">24/7</div>
+          <div class="stat__txt">Support</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num">Fast</div>
+          <div class="stat__txt">Delivery</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num">Neon</div>
+          <div class="stat__txt">Quality</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="section">
+    <div class="section__title">
+      <h2>Packages</h2>
+      <p>Choose your service and package. Extra options increase price automatically.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Discord -->
+      <div class="service-block">
+        <div class="service-head">
+          <h3>Discord Setup</h3>
+          <span class="pill">Neon Automation</span>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <h4>Basic</h4>
+            <div class="price">$10</div>
+            <ul>
+              <li>Roles, perms, channels</li>
+              <li>Moderation bot</li>
+            </ul>
+            <button class="btn btn-small orderBtn" data-service="Discord" data-package="Basic">Order</button>
+          </div>
+
+          <div class="card glow">
+            <h4>Standard</h4>
+            <div class="price">$20</div>
+            <ul>
+              <li>Tickets + welcome</li>
+              <li>Security + autorole</li>
+            </ul>
+            <button class="btn btn-small orderBtn" data-service="Discord" data-package="Standard">Order</button>
+          </div>
+
+          <div class="card">
+            <h4>Premium</h4>
+            <div class="price">$40</div>
+            <ul>
+              <li>Custom design theme</li>
+              <li>Full automation</li>
+            </ul>
+            <button class="btn btn-small orderBtn" data-service="Discord" data-package="Premium">Order</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Minecraft -->
+      <div class="service-block">
+        <div class="service-head">
+          <h3>Minecraft Setup</h3>
+          <span class="pill">Pro Plugins</span>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <h4>Basic</h4>
+            <div class="price">$12</div>
+            <ul>
+              <li>Server setup</li>
+              <li>Basic plugins</li>
+            </ul>
+            <button class="btn btn-small orderBtn" data-service="Minecraft" data-package="Basic">Order</button>
+          </div>
+
+          <div class="card glow">
+            <h4>Standard</h4>
+            <div class="price">$30</div>
+            <ul>
+              <li>LuckPerms</li>
+              <li>Optimization</li>
+            </ul>
+            <button class="btn btn-small orderBtn" data-service="Minecraft" data-package="Standard">Order</button>
+          </div>
+
+          <div class="card">
+            <h4>Premium</h4>
+            <div class="price">$55</div>
+            <ul>
+              <li>Full network</li>
+              <li>Support included</li>
+            </ul>
+            <button class="btn btn-small orderBtn" data-service="Minecraft" data-package="Premium">Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER -->
+  <section id="order" class="section">
+    <div class="section__title">
+      <h2>Order</h2>
+      <p>Generate invoice + submit your order. Admin receives it in dashboard.</p>
+    </div>
+
+    <div class="order-layout">
+      <form id="orderForm" class="panel">
+        <div class="grid">
+          <div class="field">
+            <label>Service</label>
+            <select id="service" required>
+              <option value="" disabled selected>Select service</option>
+              <option value="Discord">Discord</option>
+              <option value="Minecraft">Minecraft</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Package</label>
+            <select id="package" required>
+              <option value="" disabled selected>Select package</option>
+              <option value="Basic">Basic</option>
+              <option value="Standard">Standard</option>
+              <option value="Premium">Premium</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="optionsBox" class="options hidden">
+          <button class="optionsToggle" type="button">
+            <span>What you want in this package?</span>
+            <span class="chev">▾</span>
+          </button>
+
+          <div id="optionsContent" class="optionsContent hidden">
+            <div class="optionsMeta">
+              <span id="minLabel" class="minPill"></span>
+              <span class="muted">Extra options increase price</span>
+            </div>
+            <div id="checks" class="checks"></div>
+            <div id="optError" class="error hidden"></div>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="field">
+            <label>Discord username</label>
+            <input id="discordUser" required placeholder="David#0001"/>
+          </div>
+          <div class="field">
+            <label>Email (optional)</label>
+            <input id="email" type="email" placeholder="example@gmail.com"/>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Notes</label>
+          <textarea id="notes" rows="4" placeholder="Describe your order..."></textarea>
+        </div>
+
+        <div class="total">
+          <span>Total</span>
+          <strong id="liveTotal">$0</strong>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Generate Invoice + Submit</button>
+      </form>
+
+      <div class="panel invoicePanel">
+        <h3>Invoice</h3>
+        <p class="muted">Invoice appears after submitting order.</p>
+
+        <div id="invoice" class="invoice hidden">
+          <div class="invoiceHead">
+            <div>
+              <div class="invBrand">David Services</div>
+              <div class="muted">Discord & Minecraft Setup Services</div>
+            </div>
+            <div class="invNo">
+              <span class="muted">Invoice</span>
+              <strong id="invNumber"></strong>
+            </div>
+          </div>
+
+          <div class="invRows">
+            <div class="invRow"><span>Service</span><strong id="invService"></strong></div>
+            <div class="invRow"><span>Package</span><strong id="invPackage"></strong></div>
+            <div class="invRow"><span>Options</span><strong id="invOptions"></strong></div>
+            <div class="invRow"><span>Total</span><strong id="invTotal"></strong></div>
+          </div>
+
+          <div class="invBtns">
+            <button id="copyInvoice" class="btn btn-outline" type="button">Copy Invoice</button>
+            <a class="btn btn-primary" target="_blank" href="https://discord.gg/zQbmDXnBmP">Open Discord Ticket</a>
+          </div>
+
+          <div id="copyMsg" class="copyMsg hidden">Copied ✅</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div>© <span id="year"></span> David Services</div>
+    <a href="https://discord.gg/zQbmDXnBmP" target="_blank">Join Discord</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
